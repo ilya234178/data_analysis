@@ -13,23 +13,26 @@ class RandomWalk:
 
     def fill_walk(self):
         """Вычисляет все точки блуждания"""
+        #Отключение нулевых перемещений
+        x_step = self.get_step()
+        y_step = self.get_step()
+
+    def get_step(self):
+        """Определяет расстояние и направление для каждого шага."""
         # шаги генерируются пока не будет достигнута нужная длина
         while len(self.x_values) < self.num_points:
-
-            #определение направления и длины перемещения
+            # определение направления и длины перемещения
             x_direction = choice([1, -1])
-            x_distance = choice([0, 1, 2, 3, 4])
+            x_distance = choice([0, 1, 2, 3, 4, 5, 6, 7, 8])
             x_step = x_direction * x_distance
 
             y_direction = choice([1, -1])
-            y_distance = choice([0, 1, 2, 3, 4])
+            y_distance = choice([0, 1, 2, 3, 4, 5, 6, 7, 8])
             y_step = y_direction * y_distance
-
-            #Отключение нулевых перемещений
             if x_step == 0 and y_step == 0:
                 continue
 
-            #Вычисление следующей позиции
+            # Вычисление следующей позиции
             x = self.x_values[-1] + x_step
             y = self.y_values[-1] + y_step
 
